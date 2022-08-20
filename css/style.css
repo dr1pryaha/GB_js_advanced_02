@@ -125,4 +125,32 @@
   border-radius: 10%;
   color: #ffffff;
 }
+
+.cart-items {
+  position: absolute;
+  top: 60px;
+  border: 1px solid #000;
+}
+
+.cart-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 15px;
+}
+
+.cart-image {
+  width: 30px;
+  margin-right: 20px;
+}
+
+.cart-title {
+  margin-right: 20px;
+}
 /*# sourceMappingURL=style.css.map */
