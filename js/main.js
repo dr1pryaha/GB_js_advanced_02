@@ -48,12 +48,12 @@ class ProductItem {
 let list = new ProductList();
 
 class BasketList extends ProductList {
-  constructor(container = ".cart-items") {
-    this.container = container;
-    this.goods = [];
-    this._fetchProducts(); //рекомендация, чтобы метод был вызван в текущем классе
-    this.render(); //вывод товаров на страницу
-  }
+  // constructor(container = ".cart-items") {
+  //   this.container = container;
+  //   this.goods = [];
+  //   this._fetchProducts(); //рекомендация, чтобы метод был вызван в текущем классе
+  //   this.render(); //вывод товаров на страницу
+  // }
 
   _fetchProducts() {
     this.goods = [
@@ -64,10 +64,10 @@ class BasketList extends ProductList {
   }
 
   render() {
-    const block = document.querySelector(this.container);
+    const block = document.querySelector(".cart-items");
     for (let product of this.goods) {
       const item = new BasketItem(product);
-      block.insertAdjacentHTML("beforeend", item.render());
+      block.insertAdjacentHTML("afterbegin", item.render());
       //              block.innerHTML += item.render();
     }
   }
@@ -92,6 +92,12 @@ class BasketItem extends ProductItem {
 }
 
 let listBasket = new BasketList();
+
+document.querySelector(".btn-cart").addEventListener("click", event => {
+  if (event.currentTarget.classList.contains("btn-cart")) {
+    document.querySelector(".cart-items").classList.toggle("hidden");
+  }
+});
 
 //const products = [
 //    {id: 1, title: 'Notebook', price: 2000},
