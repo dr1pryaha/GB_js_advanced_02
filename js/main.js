@@ -71,6 +71,15 @@ class BasketList extends ProductList {
       //              block.innerHTML += item.render();
     }
   }
+
+  getTotalValue() {
+    let res = this.goods.reduce((acc, item) => acc + item.price, 0);
+    return res;
+  }
+
+  addGood() {}
+  removeGood() {}
+  changeGood() {}
 }
 
 class BasketItem extends ProductItem {
@@ -92,6 +101,7 @@ class BasketItem extends ProductItem {
 }
 
 let listBasket = new BasketList();
+let totalValue = +listBasket.getTotalValue();
 
 document.querySelector(".btn-cart").addEventListener("click", event => {
   if (event.currentTarget.classList.contains("btn-cart")) {
@@ -99,21 +109,4 @@ document.querySelector(".btn-cart").addEventListener("click", event => {
   }
 });
 
-//const products = [
-//    {id: 1, title: 'Notebook', price: 2000},
-//    {id: 2, title: 'Mouse', price: 20},
-//    {id: 3, title: 'Keyboard', price: 200},
-//    {id: 4, title: 'Gamepad', price: 50},
-//];
-//
-//const renderProduct = (product,img='https://placehold.it/200x150') => {
-//    return `<div class="product-item">
-//                <img src="${img}">
-//                <h3>${product.title}</h3>
-//                <p>${product.price}</p>
-//                <button class="buy-btn">Купить</button>
-//            </div>`
-//};
-//const renderPage = list => document.querySelector('.products').innerHTML = list.map(item => renderProduct(item)).join('');
-//
-//renderPage(products);
+document.querySelector(".basketTotalValue").textContent = totalValue;
